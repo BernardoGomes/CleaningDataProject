@@ -1,5 +1,4 @@
-#
-#coursera 
+#coursera
 #getting and cleaning data
 #course project
 
@@ -93,9 +92,7 @@ if(file.exists(training.path) &&
     colnames(full.set) <- column.names
     
     #merging the full.set with the activity description
-
     full.set <- join(full.set, activities.set)
-    
     
     #getting the correct columns to the tidy dataset
     means.set <- select(full.set, contains("mean"))
@@ -106,20 +103,55 @@ if(file.exists(training.path) &&
                       select(full.set, contains("type.of.observation")), 
                       select(full.set, contains("activity.description")),
                       select(full.set, contains("subject.id")))
-    
-    #summarizing the tidy.set
-    sum.set <- group_by(tidy.set, subject.id, activity.description)
 
     
+    #for some reason grouping and summarizing the tidy.set 
+    #with 
     
-    summary(sum.set)
-    teste <- tbl_df(sum.set)
+    #sum.set <- group_by(tidy.set, subject.id, activity.description)
+    #and summarise is not working. 
     
+    #so this is the way i am working around it
     
-    summarise(sum.set, mean())
-        
+    #creating a subject collection
+    subjects <- arrange(distinct(select(tidy.set, subject.id)),subject.id)
     
-    print(dim(full.set))
+    #setting the column names for the result set
+    column.names <- colnames(tidy.set[1:86])
+    #adding the extra columns
+    column.names[87] <- "activity.id"
+    column.names[88] <- "subject.id"
+    
+    #ajust the column names
+    column.names <- str_replace_all(column.names, "std","Standard")
+    
+    result <- as.data.frame(matrix(nrow=0, ncol=88))
+    for(i in 1:nrow(subjects))
+    {
+        for(j in 1:nrow(activities.set))
+        {
+            subject <- subjects[i,]
+            act <- activities.set[j,2]
+            #print(paste(subject, act))
+    
+            filtered.set <- filter(tidy.set, activity.description == act, subject.id == subject)
+            average.data <- colMeans(filtered.set[1:86])
+            average.data[87] <- act
+            average.data[88] <- subject
+            
+            result <- rbind(result,average.data)
+        }
+    }
+    
+    colnames(result) <- column.names
+    
+    result <- join(result, activities.set)
+    
+    #View(result)
+    
+    #write the result file
+    write.table(result, file= "tidy.data.txt", row.name=FALSE)
+
 }
 
 
