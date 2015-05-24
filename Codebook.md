@@ -5,13 +5,16 @@
 <br>
 <br>The activities are the following:
 <br>  activity.id activity.description
-<br>1           1              WALKING
-<br>2           2     WALKING_UPSTAIRS
-<br>3           3   WALKING_DOWNSTAIRS
-<br>4           4              SITTING
-<br>5           5             STANDING
-<br>6           6               LAYING
+<br>           1              WALKING
+<br>           2     WALKING_UPSTAIRS
+<br>           3   WALKING_DOWNSTAIRS
+<br>           4              SITTING
+<br>           5             STANDING
+<br>           6               LAYING
 <br>
 <br>The subjects are numbered from 1 to 30.
+<br><br>The output of the script is a txt file, with the calculated average of every std and mean variables, for each subject id and activity. 
+<br>These are the variables in the tidy.data.txt file:
+<br>
 
 
