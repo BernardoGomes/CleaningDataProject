@@ -14,7 +14,8 @@
 <br>
 <br>The subjects are numbered from 1 to 30.
 <br><br>
-<br>The script downloads and unzips the files, and then executes a series of procedures for binding the training and testing data, and selecting only the necessary measurements for the tidy data file. 
+<br>The script downloads and unzips the files, and then executes a series of procedures for binding the training and testing data, and selecting only the necessary measurements for the tidy data file. The script file, run_analysis.R, contains detailed information about what is done in each step of the program. 
+
 <br>The output of the script is a txt file, with the calculated average of every std and mean variables, for each subject id and activity. 
 <br>These are the variables in the tidy.data.txt file:
 <br>
