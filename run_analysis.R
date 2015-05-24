@@ -15,7 +15,8 @@ fileurl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%2
 #my local path
 path <- "C:/Users/Bernardo/Documents/Coursera/03 - Getting and Cleaning Data/RStudio/Project"
 #set my local path to guarantee i´m working at the right place
-setwd(path)
+#the following line should be executed only if you want to change the working path in your R Studio.
+#setwd(path)
 #local file name
 localfile <- "data.zip"
 #check to see if it is already there
