@@ -8,6 +8,7 @@ library(utils)
 library(dplyr)
 library(tidyr)
 library(plyr)
+library(stringr)
 
 
 #file url
